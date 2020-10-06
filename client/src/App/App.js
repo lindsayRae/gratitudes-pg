@@ -8,6 +8,7 @@ class App extends Component {
   render() {
     const App = () => (
       <div>
+      <p>Test</p>
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route path='/list' component={List}/>
