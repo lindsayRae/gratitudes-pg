@@ -34,32 +34,32 @@ router.get('/:id', async (req, res) => {
  * Create one gratitude
  */
 router.post('/', async (req, res) => {
-  const { sentence } = req.body;
+  const { dailyGratitude } = req.body;
 
   // add profanity, email and phone number filter
-  if (!sentence) {
+  if (!dailyGratitude) {
     return res.status(400).send('Please add a sentance for what you are grateful for.');
   }
 
-  const result = await db('gratitudes').insert({ sentence }).returning('*');
+  const result = await db('gratitudes').insert({ dailyGratitude }).returning('*');
   res.send(result);
 });
 
 /**
- * Given an id and a sentence, update one gratitude
+ * Given an id and a dailyGratitude, update one gratitude
  */
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { sentence } = req.body;
+  const { dailyGratitude } = req.body;
 
   const toUpdate = {};
 
-  if (!sentence) {
+  if (!dailyGratitude) {
     return res.status(400).send('Please enter in something you are thankful for.');
   }
 
-  if (sentence) {
-    toUpdate.sentence = sentence;
+  if (dailyGratitude) {
+    toUpdate.dailyGratitude = dailyGratitude;
   }
 
   const updated = await db('gratitudes')

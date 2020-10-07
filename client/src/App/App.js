@@ -14,7 +14,7 @@ class App extends Component {
           <Route path='/list' component={List}/>
         </Switch>
       </div>
-    )
+    );
     return (
       <Switch>
         <App/>
