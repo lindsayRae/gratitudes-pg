@@ -1,0 +1,16 @@
+postgres://
+
+svzpmxwsclrnpy
+:
+4e8baba4ee2def91a60b30a93763297bb7ae331650c10c2e65ba2c7b32ad2fdb
+@
+ec2-52-202-185-87.compute-1.amazonaws.com
+:
+5432
+/
+d82pspnff3cr8e
+
+DB_HOST=ec2-52-202-185-87.compute-1.amazonaws.com
+DB_USER=svzpmxwsclrnpy
+DB_PASSWORD=4e8baba4ee2def91a60b30a93763297bb7ae331650c10c2e65ba2c7b32ad2fdb
+DB_NAME=d82pspnff3cr8e

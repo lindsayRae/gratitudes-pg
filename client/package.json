@@ -1,36 +1,96 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "proxy": "http://localhost:9999"
+    "name": "client",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.5.0",
+        "@testing-library/user-event": "^7.2.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "3.4.3"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "env": {
+            "es6": true,
+            "browser": true,
+            "jest": true
+        },
+        "extends": [
+            "airbnb-base",
+            "plugin:react/recommended",
+            "plugin:prettier/recommended"
+        ],
+        "rules": {
+            "quotes": [
+                "error",
+                "double"
+            ],
+            "no-unused-vars": [
+                "warn",
+                {
+                    "argsIgnorePattern": "^_"
+                }
+            ],
+            "camelcase": "warn",
+            "eqeqeq": "warn",
+            "consistent-return": "warn",
+            "func-names": "warn",
+            "no-param-reassign": "warn",
+            "import/prefer-default-export": "off",
+            "no-bitwise": "warn",
+            "no-console": "off",
+            "no-restricted-globals": "warn",
+            "no-shadow": "warn",
+            "no-use-before-define": "warn",
+            "no-underscore-dangle": "warn",
+            "react/display-name": "off",
+            "react/prop-types": "off",
+            "global-require": "warn",
+            "import/no-unresolved": "warn"
+        },
+        "settings": {
+            "react": {
+                "version": "detect"
+            },
+            "import/resolver": {
+                "node": {
+                    "paths": [
+                        "src",
+                        "node_modules"
+                    ],
+                    "extensions": [
+                        ".js",
+                        ".jsx",
+                        ".ts",
+                        ".tsx"
+                    ]
+                }
+            }
+        }
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "proxy": "http://localhost:9999",
+    "devDependencies": {
+        "eslint": "^7.10.0",
+        "eslint-plugin-react": "^7.21.3"
+    }
 }

@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-class Home extends Component {
-  render() {
-    return (
+const Home = () => (
     <div className="App">
       <h1>Project Home</h1>
       {/* Link to List.js */}
@@ -14,7 +11,5 @@ class Home extends Component {
         </button>
       </Link>
     </div>
-    );
-  }
-}
+);
 export default Home;

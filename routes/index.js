@@ -1,14 +1,15 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
 
-const crud = require('./crud')
-const gratitudes = require('./gratitudes')
+const router = express.Router();
+
+const crud = require('./crud');
+const gratitudes = require('./gratitudes');
 
 // const auth = require('./auth')
 
-module.exports = router
+module.exports = router;
 
-//router.use('/crud', crud)
-router.use('/gratitudes', gratitudes)
+// router.use('/crud', crud)
+router.use('/gratitudes', gratitudes);
 
 // router.use('/auth', auth)
