@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { isEmail } = require('laiello-simple-validator');
+// const { isEmail } = require('laiello-simple-validator');
 
 const router = express.Router();
 
