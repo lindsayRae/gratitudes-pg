@@ -2,23 +2,37 @@ import React, { Component } from 'react';
 
 class List extends Component {
   // Initialize the state
-  constructor(props){
-    super(props);
-    this.state = {
-      list: []
-    }
+
+  this.state = {
+    list: []
   }
 
+
   // Fetch the list on first mount
-  componentDidMount() {
+  componentDidMount = () => {
+    console.log('componentDidMount...')
     this.getList();
+    // const response = await fetch('/api/gratitudes');
+    // const json = await response.json();
+    // console.log(json)
+    //this.setState({ data: json });
+
   }
 
   // Retrieves the list of items from the Express app
-  getList = () => {
+  getList = () =>  {
+    try {
+      // const response = await fetch('/api/getList');
+      // const json = await response.json();
+      // this.setState({ data: json });
     fetch('/api/getList')
     .then(res => res.json())
     .then(list => this.setState({ list }))
+  
+    } catch (error) {
+      console.log('catch: ', error)
+    }
+    
   }
 
   render() {
