@@ -39,13 +39,26 @@ function GratitudeList() {
   };
 
   return (
-        <div>
-            <h1>What are you thankful for today?</h1>
-            <GratitudeForm onSubmit={addGrat}/>
-            <Gratitude grats={grats}
-                completeGrat={completeGrat}
-                removeGrat={removeGrat}
-                updateGrat={updateGrat}/>
+        <div style={{ paddingTop: '6rem' }} className='container'>
+          <div className='row justify-content-center'>
+            <div className='col-lg-5'>
+              <div className='bg-white pb-5 card-header'>
+                  <div className='text-center mt-5'>
+                    <h3>Good evening <span>Lindsay</span></h3>
+                    <h5>What are you thankful for today?</h5>
+                  </div>
+              </div>
+              <div className='shadow border-0 card'>
+                <div className='px-lg-5 py-lg-5 card-body'>
+                  <GratitudeForm onSubmit={addGrat}/>
+                  <Gratitude grats={grats}
+                      completeGrat={completeGrat}
+                      removeGrat={removeGrat}
+                      updateGrat={updateGrat}/>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
   );
 }
