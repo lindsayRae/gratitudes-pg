@@ -10,6 +10,7 @@ function HeaderRow() {
   return (
         <nav className="gratNavbar">
             <div>Sunday October 11th, 2020</div>
+            <div>{Date.now()}</div>
             <FontAwesomeIcon icon={faSignOutAlt} />
         </nav>
   );

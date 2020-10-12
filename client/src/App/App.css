@@ -6,13 +6,17 @@
   }
   
   body {
-    background: linear-gradient(
-      90deg,
-      rgba(48, 16, 255, 1) 0%,
-      rgba(100, 115, 255, 1) 100%
-    );
+    
+    background: linear-gradient(150deg, #7795f8 15%, #6772e5 70%, #555abf 94%); 
+    background-repeat: no-repeat;
   }
-  .grat-app {
+
+.description {
+  font-size: 0.875rem;
+}
+
+
+  /* .grat-app {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -143,4 +147,4 @@
   
   .edit-icon {
     color: #fff;
-  }
+  } */
