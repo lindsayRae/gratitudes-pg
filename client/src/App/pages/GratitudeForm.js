@@ -25,33 +25,44 @@ function GratitudeForm(props) {
 
   return (
         <form className='grat-form' onSubmit={handleSubmit}>
-        {props.edit ? (
+          <div className='form-group'>
+          {props.edit ? (
             <>
-            <input
-                type='text'
-                placeholder='Update your item'
-                value={input}
-                name='text'
-                className='grat-input edit'
-                onChange={handleChange}
-                ref={inputRef}
-            />
-            <button className="grat-button edit">Update</button>
+            <div className='input-group-alternative mb-3'>
+              <input
+                  type='text'
+                  placeholder='Update your item'
+                  value={input}
+                  name='text'
+                  className='form-control edit'
+                  onChange={handleChange}
+                  ref={inputRef}
+              />
+              </div>
+            <div className='text-center'>
+              <button className="mt-4 btn btn-primary btn-block">Update</button>
+            </div>
             </>
-        ) : (
-                <>
-                <input
-                type='text'
-                placeholder='Add what you are thankful for here ...'
-                value={input}
-                name='text'
-                className='grat-input'
-                onChange={handleChange}
-                ref={inputRef}
-            />
-            <button className="grat-button">Add</button>
-            </>
-        )}
+          ) : (
+              <>
+                <div className='input-group-alternative mb-3'>
+                  <input
+                    type='text'
+                    placeholder='Add what you are thankful for here ...'
+                    value={input}
+                    name='text'
+                    className='form-control'
+                    onChange={handleChange}
+                    ref={inputRef}
+                  />
+                </div>
+                <div className='text-center'>
+                  <button className="mt-4 btn btn-primary btn-block">Add</button>
+                </div>
+              </>
+          )}
+
+          </div>
 
         </form>
   );

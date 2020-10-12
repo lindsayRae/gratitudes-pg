@@ -11,11 +11,15 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 // An api endpoint that returns a short list of items
-// app.get('/api/getList', (req, res) => {
-//   const list = ['item11', 'item22', 'item33'];
-//   res.json(list);
-//   console.log('Sent list of items');
-// });
+app.get('/api/getList', (req, res) => {
+  const list = [
+    { id: 1, dailyGratitude: 'Gratitude one' },
+    { id: 2, dailyGratitude: 'Gratitude two' },
+    { id: 3, dailyGratitude: 'Gratitude three' },
+  ];
+  res.json(list);
+  console.log('Sent list of items');
+});
 
 app.use('/api', routes);
 

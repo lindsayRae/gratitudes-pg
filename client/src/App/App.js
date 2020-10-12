@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import { Route, Switch } from 'react-router-dom';
-import GratitudeForm from './pages/GratitudeForm';
+// import GratitudeForm from './pages/GratitudeForm';
 import GratitudeList from './pages/GratitudeList';
+import HeaderRow from './Header/Header';
 
 import './App.css';
 // import Home from './pages/Home';
@@ -9,8 +10,9 @@ import './App.css';
 
 function App() {
   return (
-    <div className='grat-app'>
-        <GratitudeList />
+    <div className='container'>
+      <HeaderRow />
+      <GratitudeList />
     </div>
   );
 }
