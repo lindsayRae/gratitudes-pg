@@ -10,14 +10,25 @@
     background-repeat: no-repeat;
   }
 
+  .Nav {
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+    padding: 1rem;
+  }
+
+  .Nav a {
+    color: hsla(0,0%,100%,.95);
+    padding: 1rem; 
+  }
+  .Nav a:hover {
+    color: rgba(168, 168, 168, 0.95);
+    text-decoration: none;
+  }
 .description {
   font-size: 0.875rem;
 }
 
-.ViewAllWrapper {
-  padding-top: 40px;
-  text-align: right;
-}
 @media (min-width: 992px) {
     .pt-lg-7, .py-lg-7 {
       padding-top: 6rem!important;

@@ -22,7 +22,7 @@ export default () => (
   // passing the [] says only run once -> the the compnenet mounts
   useEffect(() => {
     const getGrats = async () => {
-      const res = await fetch('http://localhost:1234/api/gratitudes');
+      const res = await fetch('http://localhost:5000/api/gratitudes');
       const data = await res.json();
       console.log(data)
       setPosts(data);
@@ -31,8 +31,7 @@ export default () => (
   }, []);
 
   return (
-    <div className='container'>
-  
+    <div className='container'>  
       {
         posts.map((post) => (
           <PostedGrats
