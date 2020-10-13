@@ -1,13 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-// import GratitudeList from './pages/GratitudeList';
-
 import Home from './pages/Home';
 import Nav from './Nav';
-//import AllGratitudes from './pages/AllGratitudes';
-
-// import GratitudeForm from './pages/GratitudeForm';
+//  import AllGratitudes from './pages/AllGratitudes';
 
 import './App.css';
 
