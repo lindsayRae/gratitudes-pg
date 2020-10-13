@@ -5,14 +5,27 @@
     font-family: 'Open Sans', sans-serif;
   }
   
-  body {
-    background: linear-gradient(
-      90deg,
-      rgba(48, 16, 255, 1) 0%,
-      rgba(100, 115, 255, 1) 100%
-    );
+  body {    
+    background: linear-gradient(150deg, #7795f8 15%, #6772e5 70%, #555abf 94%); 
+    background-repeat: no-repeat;
   }
-  .grat-app {
+
+.description {
+  font-size: 0.875rem;
+}
+
+.ViewAllWrapper {
+  padding-top: 40px;
+  text-align: right;
+}
+@media (min-width: 992px) {
+    .pt-lg-7, .py-lg-7 {
+      padding-top: 6rem!important;
+  }
+}
+
+
+  /* .grat-app {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -143,4 +156,4 @@
   
   .edit-icon {
     color: #fff;
-  }
+  } */

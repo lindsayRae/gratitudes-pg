@@ -1,38 +1,32 @@
 import React from 'react';
-// import { Route, Switch } from 'react-router-dom';
-// import GratitudeForm from './pages/GratitudeForm';
-import GratitudeList from './pages/GratitudeList';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+// import GratitudeList from './pages/GratitudeList';
 import HeaderRow from './Header/Header';
+import Home from './pages/Home';
+import Nav from './Nav';
+//import AllGratitudes from './pages/AllGratitudes';
+
+//import GratitudeForm from './pages/GratitudeForm';
 
 import './App.css';
-// import Home from './pages/Home';
-// import List from './pages/List';
 
+//  functional component
 function App() {
   return (
-    <div className='container'>
-      <HeaderRow />
-      <GratitudeList />
-    </div>
+   <div className=''>
+   
+    <HeaderRow />
+    <BrowserRouter>
+      <Switch>
+        <Route path='/' exact component={Home} />
+        {/* <Route path='/all' exact component={AllGratitudes} /> */}
+      </Switch>
+      <Nav />
+    </BrowserRouter>
+
+   </div>
   );
 }
-/* eslint-disable */
-// class App extends Component {
-//   render() {
-//     const App = () => (
-//       <div>      
-//         <Switch>
-//           <Route exact path='/' component={Home}/>
-//           <Route path='/list' component={List}/> 
-//         </Switch>
-//       </div>
-//     );
-//     return (
-//       <Switch>
-//         <App/>
-//       </Switch>
-//     );
-//   }
-// }
 
 export default App;
