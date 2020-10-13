@@ -1,7 +1,5 @@
 const express = require('express');
 
-// const { isEmail } = require('laiello-simple-validator');
-
 const router = express.Router();
 
 const db = require('../db');
@@ -11,8 +9,9 @@ module.exports = router;
 /**
  * Retrieve all gratitudes
  */
-router.get('/', async (req, res) => {
+router.get('/all', async (req, res) => {
   const results = await db.select().table('gratitudes');
+  console.log('results from /routes/gratitudes: ', results);
   res.send(results);
 });
 
@@ -42,6 +41,7 @@ router.post('/', async (req, res) => {
   }
 
   const result = await db('gratitudes').insert({ dailyGratitude }).returning('*');
+  console.log('post results: ', result);
   res.send(result);
 });
 
