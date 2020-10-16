@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import Nav from './Nav';
+import Nav from './components/Nav';
+import Login from './pages/Login';
 //  import AllGratitudes from './pages/AllGratitudes';
 
 import './App.css';
@@ -15,6 +16,7 @@ function App() {
       <Nav />
       <Switch>
         <Route path='/' exact component={Home} />
+        <Route path='/login' exact component={Login} />
         {/* <Route path='/all' exact component={AllGratitudes} /> */}
       </Switch>
       </BrowserRouter>
