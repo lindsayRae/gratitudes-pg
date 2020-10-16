@@ -1,14 +1,15 @@
 const express = require('express');
-const path = require('path');
-const routes = require('./routes');
+
+const cors = require('cors')
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(express.json());
+const path = require('path');
+const routes = require('./routes');
 
-// Serve the static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.json());
+app.use(cors());
 
 // An api endpoint that returns a short list of items
 app.get('/api/getList', (req, res) => {
@@ -21,12 +22,17 @@ app.get('/api/getList', (req, res) => {
   console.log('Sent list of items');
 });
 
-app.use('/api', routes);
+if (process.env.NODE_ENV === 'production') {
+  // Serve the static files from the React app
+  app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Handles any requests that don't match the ones above
-app.get('*', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/client/build/index.html`));
-});
+  // Handles any requests that don't match the ones above
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(`${__dirname}/client/build/index.html`));
+  });
+}
+
+app.use('/api', routes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
