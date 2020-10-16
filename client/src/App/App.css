@@ -8,6 +8,7 @@
   body {    
     background: linear-gradient(150deg, #7795f8 15%, #6772e5 70%, #555abf 94%); 
     background-repeat: no-repeat;
+    height: 100vh;
   }
 
   .Nav {
