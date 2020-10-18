@@ -9,7 +9,7 @@ module.exports = router;
 /**
  * Retrieve all gratitudes
  */
-router.get('/all', async (req, res) => {
+router.get('/', async (req, res) => {
   const results = await db.select().table('gratitudes');
   console.log('results from /routes/gratitudes: ', results);
   res.send(results);
@@ -21,6 +21,7 @@ router.get('/all', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
   const results = await db('gratitudes').where({ id });
+  console.log('results by ID: ', results);
 
   if (results.length > 0) {
     res.send(results);
@@ -68,6 +69,7 @@ router.put('/:id', async (req, res) => {
     .returning('*');
 
   if (updated.length > 0) {
+    console.log('updated: ', updated);
     res.send(updated);
   } else {
     res.status(404).send('No item with such id');
@@ -86,6 +88,7 @@ router.delete('/:id', async (req, res) => {
     .returning('*');
 
   if (result.length > 0) {
+    console.log('delted entry: ', result);
     res.send(result);
   } else {
     res.status(404).send('No item with such id');
