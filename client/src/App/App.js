@@ -4,7 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Nav from './components/Nav';
 import Login from './pages/Login';
-//  import AllGratitudes from './pages/AllGratitudes';
+import Signup from './pages/Signup';
+import AllGratitudes from './pages/AllGratitudes';
 
 import './App.css';
 
@@ -17,7 +18,8 @@ function App() {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/login' exact component={Login} />
-        {/* <Route path='/all' exact component={AllGratitudes} /> */}
+        <Route path='/signup' exact component={Signup} />
+        <Route path='/all' exact component={AllGratitudes} />
       </Switch>
       </BrowserRouter>
    </div>
