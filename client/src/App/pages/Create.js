@@ -1,25 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 export default () => {
   const [dailyGratitude, setGratitude] = useState('');
+  const [error, setError] = useState('');
+  const { user } = useContext(UserContext);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('heard handle submit');
-    const response = await fetch('http://localhost:5000/api/gratitudes', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        dailyGratitude,
-      }),
-    });
 
-    const data = await response.json();
-    console.log(data);
+    if (!user) {
+      setError('Please login ');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/api/gratitudes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.jwt}`,
+        },
+        body: JSON.stringify({
+          dailyGratitude,
+        }),
+      });
+
+      const data = await response.json();
+      console.log('POST data', data);
+    } catch (err) {
+      console.log('Exception ', err);
+      setError(err);
+    }
   };
   return (
         <div className="Create">
+        {error && <p>{error}</p>}
+
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

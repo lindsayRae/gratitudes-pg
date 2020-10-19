@@ -18,8 +18,7 @@ const usePosts = () => {
 };
 
 export default () => {
-  const quote = usePosts();
-  console.log(quote);
+  const quote = usePosts(); 
   return (
     <div className='quoteContainer'>
    {quote[0]
