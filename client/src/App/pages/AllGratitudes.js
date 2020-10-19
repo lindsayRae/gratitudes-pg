@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PostedGrats from './PostedGrats/PostedGrats';
 
 export default () => {
@@ -7,7 +8,7 @@ export default () => {
   // passing the [] says only run once -> the the compnenet mounts
   useEffect(() => {
     const getGrats = async () => {
-      const res = await fetch('http://localhost:5000/api/gratitudes/all');
+      const res = await fetch('http://localhost:5000/api/gratitudes');
       const data = await res.json();
       console.log(data);
       setPosts(data);
@@ -19,11 +20,13 @@ export default () => {
     <div className='container'>
       {
         posts.map((post) => (
-          <PostedGrats
-            key={post.id}
-            date={post.date}
-            dailyGratitude={post.dailyGratitude}
-          />
+          <Link to={`/${post.id}`}>
+            <PostedGrats
+              key={post.id}
+              date={post.date}
+              dailyGratitude={post.dailyGratitude}
+            />
+          </Link>
         ))
       }
     </div>
