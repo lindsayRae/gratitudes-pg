@@ -12,20 +12,20 @@ export default () => {
   return (
         <div className='Nav'>
 
-        {user
-        && <>
-        <NavLink to="/" exact>Home</NavLink>
-            <NavLink to="/all" exact>View All Entries</NavLink>
-            <NavLink to="/login" exact>Sign Out <FontAwesomeIcon icon={faSignOutAlt} /></NavLink>
-        </>
-        }
-        {!user
+          {user
           && <>
-        <NavLink to="/login" exact>Login</NavLink>
-        <NavLink to="/signup" exact>Signup</NavLink>
+              <NavLink to="/" exact>Home</NavLink>
+              <NavLink to="/all" exact>View All Entries</NavLink>
+              <NavLink to="/login" exact>Sign Out <FontAwesomeIcon icon={faSignOutAlt} /></NavLink>
+          </>
+          }
+          {!user
+            && <>
+          <NavLink to="/login" exact>Login</NavLink>
+          <NavLink to="/signup" exact>Signup</NavLink>
 
-        </>
-        }
+          </>
+          }
 
         </div>
   );
