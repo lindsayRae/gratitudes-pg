@@ -21,8 +21,8 @@ export default () => {
           }
           {!user
             && <>
-          <NavLink to="/login" exact>Login</NavLink>
-          <NavLink to="/signup" exact>Signup</NavLink>
+          <NavLink to="/" exact>Login</NavLink>
+          <NavLink to="/signup" exact>Create new account</NavLink>
 
           </>
           }

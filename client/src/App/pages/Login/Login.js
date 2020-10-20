@@ -3,13 +3,12 @@ import React, { useState, useContext, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
-import { UserContext } from '../context/UserContext';
+import { UserContext } from '../../context/UserContext';
 
-import './Login/Login.css';
+import './Login.css';
 
 export default ({ history }) => {
   const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -24,7 +23,7 @@ export default ({ history }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log('heard submit');
     try {
       // const response = await fetch('http://localhost:5000/auth/login', {
     //   method: 'POST',
@@ -32,8 +31,6 @@ export default ({ history }) => {
     //     'Content-type': 'application/json',
     //   },
     //   body: JSON.stringify({
-    //     username: email,
-    //     firstName,
     //     email,
     //     password,
     //   }),
@@ -44,7 +41,6 @@ export default ({ history }) => {
         jwt: 'sdfsdfsdf',
         user: {
           username: 'Lindsay',
-          password: '1234',
           email: 'lbarnett712@gmail.com',
         },
       };
@@ -64,60 +60,50 @@ export default ({ history }) => {
 
       setUser(data);
     } catch (err) {
-      setError('Something went wronge', err);
+      console.log(err);
     }
   };
   return (
     <div>
 
-        <Container className='pt-5'>
+      <Container className='pt-5'>
         <Row className='justify-content-center'>
             <div className='col-lg-5'>
               <div className='pt-5 shadow border-0 card'>
                 <div className='bg-white pb-5 text-center card-header'>
-                  <h4>Create Account</h4>
+                  <h4>Welcome to MyGratitudes</h4>
+                  <h5 className='pt-2'>Please Login</h5>
                 </div>
             </div>
                 <div className='bg-white card-body px-lg-5 py-lg-5'>
             <div className='formContainer'>
             <form className='loginForm' onSubmit={handleSubmit}>
-            <input
-                type="email"
-                value={email}
-                placeholder="email"
-                className='formControl'
-                onChange={(event) => {
-                  setError('');
-                  setEmail(event.target.value);
-                }}
-            />
-            <input
-                type="text"
-                value={firstName}
-                placeholder="first name"
-                className='formControl'
-                onChange={(event) => {
-                  setError('');
-                  setFirstName(event.target.value);
-                }}
-            />
-            <input
-                type="password"
-                value={password}
-                placeholder="password"
-                className='formControl'
-                onChange={(event) => {
-                  setError('');
-                  setPassword(event.target.value);
-                }}
-            />
-             <div className='text-center'>
-                <Button type='submit'>Signup</Button>
+                <input
+                    type="email"
+                    value={email}
+                    className='formControl'
+                    placeholder="email"
+                    onChange={(event) => {
+                      setError('');
+                      setEmail(event.target.value);
+                    }}
+                />
+                <input
+                    type="password"
+                    value={password}
+                    placeholder="password"
+                    onChange={(event) => {
+                      setError('');
+                      setPassword(event.target.value);
+                    }}
+                />
+                <div className='text-center'>
+                  <Button type='submit' >Login</Button>
+                </div>
+            </form>
             </div>
-        </form>
-        </div>
-        {error && <p>{error}</p>}
 
+        {error && <p>{error}</p>}
             </div>
 
             </div>
