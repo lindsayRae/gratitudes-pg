@@ -8,13 +8,13 @@ import { UserContext } from '../context/UserContext';
 
 export default () => {
   const { user } = useContext(UserContext);
-
+console.log(user)
   return (
         <div className='Nav'>
 
           {user
           && <>
-              <NavLink to="/" exact>Home</NavLink>
+              <NavLink to="/home" exact>Home</NavLink>
               <NavLink to="/all" exact>View All Entries</NavLink>
               <NavLink to="/login" exact>Sign Out <FontAwesomeIcon icon={faSignOutAlt} /></NavLink>
           </>

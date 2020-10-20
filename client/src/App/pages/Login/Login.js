@@ -17,7 +17,7 @@ export default ({ history }) => {
 
   useEffect(() => {
     if (user) {
-      history.push('/');
+      history.push('/home');
     }
   }, [user]);
 
@@ -59,6 +59,7 @@ export default ({ history }) => {
       }
 
       setUser(data);
+
     } catch (err) {
       console.log(err);
     }
