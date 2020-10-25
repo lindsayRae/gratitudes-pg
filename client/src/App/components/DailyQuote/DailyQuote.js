@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './DailyQuote.css';
 
+// custom hook ** use this pattern
 const usePosts = () => {
   const [quoteRes, setQuote] = useState([]);
 
@@ -23,7 +24,7 @@ export default () => {
     <div className='quoteContainer'>
    {quote[0]
       && <>
-        <div>"{quote[0].q}"</div>
+        <div>{quote[0].q}</div>
         <hr></hr>
         <div>- {quote[0].a}</div>
       </>
