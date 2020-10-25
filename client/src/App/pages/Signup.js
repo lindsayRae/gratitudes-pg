@@ -9,7 +9,6 @@ import './Login/Login.css';
 
 export default ({ history }) => {
   const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -17,6 +16,8 @@ export default ({ history }) => {
   console.log('user: ', user);
 
   useEffect(() => {
+    console.log('in use effect');
+    console.log(user);
     if (user) {
       history.push('/');
     }
@@ -26,35 +27,27 @@ export default ({ history }) => {
     event.preventDefault();
 
     try {
-      // const response = await fetch('http://localhost:5000/auth/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     username: email,
-    //     firstName,
-    //     email,
-    //     password,
-    //   }),
-    // });
-
-      // const data = await response.json();
-      const data = {
-        jwt: 'sdfsdfsdf',
-        user: {
-          username: 'Lindsay',
-          password: '1234',
-          email: 'lbarnett712@gmail.com',
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
         },
-      };
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
 
-      // sample an error 400
-      //   data = {
-      //     message: [
-      //       { message: 'Please provide your password' },
-      //     ],
-      //   };
+      const data = await response.json();
+      // const data = {
+      //   jwt: 'sdfsdfsdf',
+      //   user: {
+      //     username: 'Lindsay',
+      //     password: '1234',
+      //     email: 'lbarnett712@gmail.com',
+      //   },
+      // };
+
       console.log('data: ', data);
 
       if (data.message) {
@@ -64,7 +57,7 @@ export default ({ history }) => {
 
       setUser(data);
     } catch (err) {
-      setError('Something went wronge', err);
+      setError('Something went wrong', err);
     }
   };
   return (
@@ -89,16 +82,6 @@ export default ({ history }) => {
                 onChange={(event) => {
                   setError('');
                   setEmail(event.target.value);
-                }}
-            />
-            <input
-                type="text"
-                value={firstName}
-                placeholder="first name"
-                className='formControl'
-                onChange={(event) => {
-                  setError('');
-                  setFirstName(event.target.value);
                 }}
             />
             <input

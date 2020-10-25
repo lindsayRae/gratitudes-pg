@@ -25,25 +25,25 @@ export default ({ history }) => {
     event.preventDefault();
     console.log('heard submit');
     try {
-      // const response = await fetch('http://localhost:5000/auth/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     email,
-    //     password,
-    //   }),
-    // });
-
-      // const data = await response.json();
-      const data = {
-        jwt: 'sdfsdfsdf',
-        user: {
-          username: 'Lindsay',
-          email: 'lbarnett712@gmail.com',
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
         },
-      };
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+      // const data = {
+      //   jwt: 'sdfsdfsdf',
+      //   user: {
+      //     username: 'Lindsay',
+      //     email: 'lbarnett712@gmail.com',
+      //   },
+      // };
 
       // sample an error 400
       //   data = {
@@ -59,7 +59,6 @@ export default ({ history }) => {
       }
 
       setUser(data);
-
     } catch (err) {
       console.log(err);
     }

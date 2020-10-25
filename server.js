@@ -1,26 +1,30 @@
 const express = require('express');
 
-const cors = require('cors')
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 const path = require('path');
 const routes = require('./routes');
+const passport = require('./auth');
 
 app.use(express.json());
 app.use(cors());
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 // An api endpoint that returns a short list of items
-app.get('/api/getList', (req, res) => {
-  const list = [
-    { id: 1, dailyGratitude: 'Gratitude one' },
-    { id: 2, dailyGratitude: 'Gratitude two' },
-    { id: 3, dailyGratitude: 'Gratitude three' },
-  ];
-  res.json(list);
-  console.log('Sent list of items');
-});
+// app.get('/api/getList', (req, res) => {
+//   const list = [
+//     { id: 1, dailyGratitude: 'Gratitude one' },
+//     { id: 2, dailyGratitude: 'Gratitude two' },
+//     { id: 3, dailyGratitude: 'Gratitude three' },
+//   ];
+//   res.json(list);
+//   console.log('Sent list of items');
+// });
 
 if (process.env.NODE_ENV === 'production') {
   // Serve the static files from the React app
