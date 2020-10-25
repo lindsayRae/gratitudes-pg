@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default () => {
-  function greeting() {
-    const { hours } = new Date();
+  /**
+   *
+   */
+  const getGreeting = () => {
+    const today = new Date();
+    return greeting(today);
+  };
 
-    if (hours > 12 && hours < 17) {
-      return 'Good Afternoon, Friend';
-    } if (hours > 17) {
-      return 'Good Evening, Friend';
-    }
-    return 'Good Morning, Frined';
-  }
+  /**
+ * Written this way so we can unit test
+ * @param {*} today
+ */
+  const greeting = (today) => {
+    const curHr = today.getHours();
+
+    if (curHr < 12) return 'Good Morning,';
+    if (curHr < 18) return 'Good Afternoon,';
+    return 'Good Evening,';
+  };
+  const greet = getGreeting();
+
   return (
-
-       <h4>{greeting()}</h4>
+       <h4>{greet}</h4>
   );
 };

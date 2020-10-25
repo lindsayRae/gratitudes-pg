@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './DailyQuote.css';
+import { getQuote } from '../../api';
 
+// custom hook ** use this pattern
 const usePosts = () => {
   const [quoteRes, setQuote] = useState([]);
 
   useEffect(() => {
-    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    const quoteURL = 'https://zenquotes.io/api/today';
     const fetchQuote = async () => {
-      const res = await fetch(proxyurl + quoteURL);
-      const data = await res.json();
-      setQuote(data);
+      const newQuote = await getQuote();
+      setQuote(newQuote);
     };
     fetchQuote();
   }, []);
@@ -18,12 +17,12 @@ const usePosts = () => {
 };
 
 export default () => {
-  const quote = usePosts(); 
+  const quote = usePosts();
   return (
     <div className='quoteContainer'>
    {quote[0]
       && <>
-        <div>"{quote[0].q}"</div>
+        <div>{quote[0].q}</div>
         <hr></hr>
         <div>- {quote[0].a}</div>
       </>
