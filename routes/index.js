@@ -1,6 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
+
 const gratitudes = require('./gratitudes');
 const auth = require('./auth');
 

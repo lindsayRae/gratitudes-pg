@@ -7,7 +7,22 @@ const db = require('../db');
 
 module.exports = router;
 
-router.post('/api/register', async (req, res) => {
+const passport = require('../auth');
+
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  console.log('*** in POST /login auth.js');
+  console.log('req.user: ', req.user);
+  res.send('OK');
+});
+
+router.post('/me', (req, res) => {
+  console.log('req.user', req.user);
+
+  const { user } = req;
+  res.send(user);
+});
+
+router.post('/register', async (req, res) => {
   const { email, password } = req.body;
 
   if (!email) {
