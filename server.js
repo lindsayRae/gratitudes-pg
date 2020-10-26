@@ -1,6 +1,7 @@
 const express = require('express');
 
 const cors = require('cors');
+const session = require('express-session');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,9 +13,28 @@ const passport = require('./auth');
 app.use(express.json());
 app.use(cors());
 
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'the secret',
+  resave: true,
+  saveUninitialized: false,
+  cookie: { secure: process.env.NODE_ENV === 'production' },
+
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+const isUserLoggedIn = (req, res, next) => {
+  if (req.user) {
+    return next();
+  }
+
+  return res.status(403).send('You are not authorized');
+};
+
+// just a postman test
+app.get('/second', isUserLoggedIn, (req, res) => {
+  res.send('<h1>Here and /second</h1>');
+});
 // An api endpoint that returns a short list of items
 // app.get('/api/getList', (req, res) => {
 //   const list = [

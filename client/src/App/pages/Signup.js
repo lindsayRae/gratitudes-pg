@@ -39,14 +39,6 @@ export default ({ history }) => {
       });
 
       const data = await response.json();
-      // const data = {
-      //   jwt: 'sdfsdfsdf',
-      //   user: {
-      //     username: 'Lindsay',
-      //     password: '1234',
-      //     email: 'lbarnett712@gmail.com',
-      //   },
-      // };
 
       console.log('data: ', data);
 

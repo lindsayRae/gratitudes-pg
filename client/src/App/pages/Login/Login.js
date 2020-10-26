@@ -24,6 +24,9 @@ export default ({ history }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log('heard submit');
+    console.log('email', email);
+    console.log('passwor', password);
+
     try {
       const response = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
@@ -37,21 +40,8 @@ export default ({ history }) => {
       });
 
       const data = await response.json();
-      // const data = {
-      //   jwt: 'sdfsdfsdf',
-      //   user: {
-      //     username: 'Lindsay',
-      //     email: 'lbarnett712@gmail.com',
-      //   },
-      // };
 
-      // sample an error 400
-      //   data = {
-      //     message: [
-      //       { message: 'Please provide your password' },
-      //     ],
-      //   };
-      console.log('data: ', data);
+      console.log('login data: ', data);
 
       if (data.message) {
         setError(data.message[0].message);
