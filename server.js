@@ -45,6 +45,7 @@ app.get('/second', isUserLoggedIn, (req, res) => {
 //   res.json(list);
 //   console.log('Sent list of items');
 // });
+app.use('/api', routes);
 
 if (process.env.NODE_ENV === 'production') {
   // Serve the static files from the React app
@@ -55,8 +56,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(`${__dirname}/client/build/index.html`));
   });
 }
-
-app.use('/api', routes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
