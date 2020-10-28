@@ -23,9 +23,6 @@ export default ({ history }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('heard submit');
-    console.log('email', email);
-    console.log('passwor', password);
 
     try {
       const response = await fetch('http://localhost:5000/api/auth/login', {

@@ -12,7 +12,7 @@ const passport = require('../auth');
 router.post('/login', passport.authenticate('local'), (req, res) => {
   console.log('*** in POST /login auth.js');
   console.log('req.user: ', req.user);
-  res.send('OK');
+  res.send({ status: 'OK' });
 });
 
 router.post('/me', (req, res) => {
