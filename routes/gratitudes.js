@@ -6,6 +6,14 @@ const db = require('../db');
 
 module.exports = router;
 
+const isUserLoggedIn = (req, res, next) => {
+  if (req.user) {
+    return next();
+  }
+
+  return res.status(403).send({ message: 'You are not authorized' });
+};
+
 /**
  * Retrieve all gratitudes
  */
@@ -26,7 +34,7 @@ router.get('/:id', async (req, res) => {
   if (results.length > 0) {
     res.send(results);
   } else {
-    res.status(404).send('No item with such id');
+    res.status(404).send({ message: 'No item with such id' });
   }
 });
 
@@ -34,16 +42,16 @@ router.get('/:id', async (req, res) => {
  * Create one gratitude
  */
 router.post('/', async (req, res) => {
-  const { dailyGratitude } = req.body;
-
-  // add profanity, email and phone number filter
+  const { dailyGratitude, date } = req.body;
+  console.log('post body: ', req.body);
+  // add email and phone number filter
   if (!dailyGratitude) {
-    return res.status(400).send('Please add a sentance for what you are grateful for.');
+    return res.status(400).send({ message: 'Please add a sentance for what you are grateful for.' });
   }
 
-  const result = await db('gratitudes').insert({ dailyGratitude }).returning('*');
+  const result = await db('gratitudes').insert({ dailyGratitude, date }).returning('*');
   console.log('post results: ', result);
-  res.send(result);
+  return res.send(result);
 });
 
 /**
@@ -51,16 +59,19 @@ router.post('/', async (req, res) => {
  */
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { dailyGratitude } = req.body;
+  const { dailyGratitude, date } = req.body;
 
   const toUpdate = {};
 
   if (!dailyGratitude) {
-    return res.status(400).send('Please enter in something you are thankful for.');
+    return res.status(400).send({ message: 'Please enter in something you are thankful for.' });
   }
 
   if (dailyGratitude) {
     toUpdate.dailyGratitude = dailyGratitude;
+  }
+  if (date) {
+    toUpdate.date = date;
   }
 
   const updated = await db('gratitudes')
@@ -70,10 +81,9 @@ router.put('/:id', async (req, res) => {
 
   if (updated.length > 0) {
     console.log('updated: ', updated);
-    res.send(updated);
-  } else {
-    res.status(404).send('No item with such id');
+    return res.send(updated);
   }
+  return res.status(404).send('No item with such id');
 });
 
 /**
@@ -89,8 +99,7 @@ router.delete('/:id', async (req, res) => {
 
   if (result.length > 0) {
     console.log('delted entry: ', result);
-    res.send(result);
-  } else {
-    res.status(404).send('No item with such id');
+    return res.send(result);
   }
+  return res.status(404).send({ message: 'No item with such id' });
 });

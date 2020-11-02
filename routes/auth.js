@@ -10,13 +10,12 @@ module.exports = router;
 const passport = require('../auth');
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  console.log('*** in POST /login auth.js');
   console.log('req.user: ', req.user);
   res.send({ status: 'OK' });
 });
 
 router.post('/me', (req, res) => {
-  console.log('req.user', req.user);
+  console.log('/me .. req.user', req.user);
 
   const { user } = req;
   res.send(user);
@@ -47,5 +46,5 @@ router.post('/register', async (req, res) => {
     .insert({ email, password: hash, salt })
     .returning(['id', 'email']);
 
-  res.send(insert);
+  return res.send(insert);
 });
