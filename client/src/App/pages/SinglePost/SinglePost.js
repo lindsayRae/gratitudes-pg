@@ -88,11 +88,11 @@ export default ({ match, history }) => {
             </>
             }
           </div>
-              <div className='post-row'>
+              <div className='post-row d-flex justify-content-center'>
                 <Button variant="warning" onClick={handleDelete}> Delete this Post</Button>
                 <Button variant="info" onClick={() => setEdit(true)}> Edit this Post</Button>
               </div>
-              <div className='post-row'>
+              <div className='post-row edit-row'>
               {edit
                 && <form onSubmit={handleEditSubmit}>
                   <input
