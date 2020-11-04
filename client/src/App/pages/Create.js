@@ -3,6 +3,7 @@ import { UserContext } from '../context/UserContext';
 
 export default () => {
   const [dailyGratitude, setGratitude] = useState('');
+  const [date, setDate] = useState('');
   const [error, setError] = useState('');
   const { user } = useContext(UserContext);
 
@@ -23,6 +24,7 @@ export default () => {
         },
         body: JSON.stringify({
           dailyGratitude,
+          date: new Date().toISOString(),
         }),
       });
 

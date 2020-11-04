@@ -23,28 +23,20 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-const isUserLoggedIn = (req, res, next) => {
-  if (req.user) {
-    return next();
-  }
+// const isUserLoggedIn = (req, res, next) => {
+//   if (req.user) {
+//     return next();
+//   }
 
-  return res.status(403).send('You are not authorized');
-};
+//   return res.status(403).send({ message: 'You are not authorized' });
+// };
 
-// just a postman test
-app.get('/second', isUserLoggedIn, (req, res) => {
-  res.send('<h1>Here and /second</h1>');
-});
-// An api endpoint that returns a short list of items
-// app.get('/api/getList', (req, res) => {
-//   const list = [
-//     { id: 1, dailyGratitude: 'Gratitude one' },
-//     { id: 2, dailyGratitude: 'Gratitude two' },
-//     { id: 3, dailyGratitude: 'Gratitude three' },
-//   ];
-//   res.json(list);
-//   console.log('Sent list of items');
+// // just a postman test
+// app.get('/second', isUserLoggedIn, (req, res) => {
+//   res.send('<h1>Here and /second</h1>');
 // });
+
+// Alex, how can I use isUserLogginIn on my routes, except the login?
 app.use('/api', routes);
 
 if (process.env.NODE_ENV === 'production') {

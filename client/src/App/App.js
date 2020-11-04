@@ -5,8 +5,8 @@ import Home from './pages/Home';
 import Nav from './components/Nav';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup';
-import AllGratitudes from './pages/AllGratitudes';
-import SinglePost from './pages/SinglePost';
+import AllGratitudes from './pages/AllGrats/AllGratitudes';
+import SinglePost from './pages/SinglePost/SinglePost';
 
 import './App.css';
 
